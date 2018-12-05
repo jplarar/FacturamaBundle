@@ -36,7 +36,7 @@ class JplararFacturamaExtension extends Extension
             'product_code',
             'unit_code',
             'taxes',
-            'dev'
+            'env'
         ];
 
         foreach ($parameters as $parameter) {
