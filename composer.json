@@ -1,0 +1,39 @@
+{
+    "name": "jplarar/facturama-bundle",
+    "description": "A simple Symfony2+ bundle for the API for Facturama.",
+    "type": "symfony-bundle",
+    "keywords": [
+        "jplarar",
+        "facturama",
+        "symfony"
+    ],
+    "homepage": "https://github.com/jplarar/FacturamaBundle",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Juan Paulo Lara",
+        "email": "jplarar@gmail.com",
+        "role": "developer"
+      }
+    ],
+    "require": {
+      "php": ">=5.6",
+      "symfony/config": "^2.0 || ^3.0",
+      "symfony/dependency-injection": "^2.0 || ^3.0",
+      "symfony/framework-bundle": "^2.0 || ^3.0",
+      "symfony/http-foundation": "^2.0 || ^3.0",
+      "symfony/http-kernel": "^2.0 || ^3.0",
+      "symfony/options-resolver": "^2.0 || ^3.0",
+      "symfony/security": "^2.0 || ^3.0",
+      "symfony/validator": "^2.0 || ^3.0",
+      "guzzlehttp/guzzle": "^6.0"
+    },
+    "suggest": {
+    },
+    "require-dev": {
+    },
+    "autoload": {
+      "psr-0": { "Jplarar\\FacturamaBundle": "" }
+    },
+    "target-dir": "Jplarar/FacturamaBundle"
+}
