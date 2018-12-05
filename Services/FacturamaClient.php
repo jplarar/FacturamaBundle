@@ -98,9 +98,7 @@ class FacturamaClient
                 "Name" => $name,
                 "CfdiUse"=> $this->cfdiUse
             ],
-            "Items"=> [
-                $this->products
-            ]
+            "Items"=> $this->products
         ];
 
         $client = new Client();
