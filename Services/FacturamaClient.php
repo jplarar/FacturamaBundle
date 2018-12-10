@@ -16,6 +16,7 @@ class FacturamaClient
 
     // Routes
     const CREATE_BILL = "/2/cfdis";
+    const GET_BILL = "/cfdi/";
 
     // Auth
     protected $user;
@@ -111,7 +112,7 @@ class FacturamaClient
             ]
         );
 
-        return $response;
+        return $response->getBody()->getContents();
     }
 
     /**
@@ -140,6 +141,24 @@ class FacturamaClient
             ],
             "Total"=> number_format((1 + $this->taxes) * ($quantity * $price), 2, '.', '')
         ];
+    }
+
+    /**
+     * @param $id
+     * @param string $format
+     * @return mixed
+     */
+    public function getBill($id, $format = 'pdf')
+    {
+        $url = $this->server.self::GET_BILL.$format.'/issued/'.$id;
+        $client = new Client();
+        $response = $client->get(
+            $url,
+            [
+                \GuzzleHttp\RequestOptions::AUTH => [$this->user, $this->password]
+            ]
+        );
+        return $response->getBody()->getContents();
     }
 
 }
