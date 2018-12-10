@@ -122,6 +122,7 @@ class FacturamaClient
      */
     public function addProduct($description, $price, $quantity)
     {
+        $price = number_format($price, 2, '.', '');
         $this->products[] = [
             "ProductCode"=> $this->productCode,
             "Description"=> $description,
