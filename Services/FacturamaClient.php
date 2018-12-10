@@ -122,24 +122,23 @@ class FacturamaClient
      */
     public function addProduct($description, $price, $quantity)
     {
-        $price = number_format($price, 2, '.', '');
         $this->products[] = [
             "ProductCode"=> $this->productCode,
             "Description"=> $description,
             "UnitCode"=> $this->unitCode,
-            "UnitPrice"=> $price,
+            "UnitPrice"=> number_format($price, 2, '.', ''),
             "Quantity"=> $quantity,
-            "Subtotal"=> $quantity * $price,
+            "Subtotal"=> number_format($quantity * $price, 2, '.', ''),
             "Taxes"=> [
                 [
-                    "Total"=> ($quantity * $price) * $this->taxes,
+                    "Total"=> number_format(($quantity * $price) * $this->taxes, 2, '.', ''),
                     "Name"=> "IVA",
-                    "Base"=> $quantity * $price,
+                    "Base"=> number_format($quantity * $price, 2, '.', ''),
                     "Rate"=> $this->taxes,
                     "IsRetention"=> false
                 ]
             ],
-            "Total"=> (1 + $this->taxes) * ($quantity * $price)
+            "Total"=> number_format((1 + $this->taxes) * ($quantity * $price), 2, '.', '')
         ];
     }
 
