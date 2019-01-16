@@ -17,6 +17,8 @@ class FacturamaClient
     // Routes
     const CREATE_BILL = "/2/cfdis";
     const GET_BILL = "/cfdi/";
+    const GET_CLIENT = "/Client?keyword=";
+    const NEW_CLIENT = "/Client";
 
     // Auth
     protected $user;
@@ -158,6 +160,53 @@ class FacturamaClient
                 \GuzzleHttp\RequestOptions::AUTH => [$this->user, $this->password]
             ]
         );
+
+        return $response->getBody()->getContents();
+    }
+
+    /**
+     * @param $rfc
+     * @return mixed
+     */
+    public function getClient($rfc)
+    {
+        $url = $this->server.self::GET_CLIENT.$rfc;
+        $client = new Client();
+        $response = $client->get(
+            $url,
+            [
+                \GuzzleHttp\RequestOptions::AUTH => [$this->user, $this->password]
+            ]
+        );
+
+        return $response->getBody()->getContents();
+    }
+
+    /**
+     * @param $email
+     * @param $rfc
+     * @param $name
+     * @return mixed
+     */
+    public function newClient($email, $rfc, $name)
+    {
+        $body = [
+            "Email"=> $email,
+            "Rfc" => $rfc,
+            "Name" => $name,
+            "CfdiUse" => $this->cfdiUse,
+            "TaxResidence" => '',
+            "NumRegIdTrib" => ''
+        ];
+        $client = new Client();
+        $response = $client->post(
+            $this->server.self::NEW_CLIENT,
+            [
+                \GuzzleHttp\RequestOptions::AUTH => [$this->user, $this->password],
+                \GuzzleHttp\RequestOptions::JSON => $body
+            ]
+        );
+
         return $response->getBody()->getContents();
     }
 
