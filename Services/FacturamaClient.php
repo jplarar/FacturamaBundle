@@ -114,6 +114,8 @@ class FacturamaClient
             ]
         );
 
+        $this->products = [];
+
         return $response->getBody()->getContents();
     }
 
