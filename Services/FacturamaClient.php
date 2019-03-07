@@ -106,13 +106,17 @@ class FacturamaClient
 
         $client = new Client();
 
-        $response = $client->post(
-            $this->server.self::CREATE_BILL,
-            [
-                \GuzzleHttp\RequestOptions::AUTH => [$this->user, $this->password],
-                \GuzzleHttp\RequestOptions::JSON => $body
-            ]
-        );
+        try {
+            $response = $client->post(
+                $this->server.self::CREATE_BILL,
+                [
+                    \GuzzleHttp\RequestOptions::AUTH => [$this->user, $this->password],
+                    \GuzzleHttp\RequestOptions::JSON => $body
+                ]
+            );
+        } catch (\Exception $e) {
+            $this->products = [];
+        }
 
         $this->products = [];
 
