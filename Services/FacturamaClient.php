@@ -84,7 +84,8 @@ class FacturamaClient
      * @param $folio
      * @param $rfc
      * @param $name
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return string
+     * @throws \Exception
      */
     public function createBill($folio, $rfc, $name)
     {
@@ -116,6 +117,7 @@ class FacturamaClient
             );
         } catch (\Exception $e) {
             $this->products = [];
+            throw new \Exception($e->getMessage());
         }
 
         $this->products = [];
