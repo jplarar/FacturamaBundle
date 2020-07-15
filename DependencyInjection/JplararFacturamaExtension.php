@@ -28,15 +28,15 @@ class JplararFacturamaExtension extends Extension
         $parameters = [
             'facturama_username',
             'facturama_password',
-            'serie',
-            'currency',
-            'expedition_place',
-            'cfdi_use',
-            'payment_form',
-            'product_code',
-            'unit_code',
-            'taxes',
-            'env'
+            'facturama_serie',
+            'facturama_currency',
+            'facturama_expedition_place',
+            'facturama_cfdi_use',
+            'facturama_payment_form',
+            'facturama_product_code',
+            'facturama_unit_code',
+            'facturama_taxes',
+            'facturama_env'
         ];
 
         foreach ($parameters as $parameter) {

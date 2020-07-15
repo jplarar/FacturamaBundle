@@ -31,11 +31,11 @@ class FacturamaClient
     protected $serie;
     protected $currency;
     protected $expeditionPlace;
-    protected $cfdiUse = "G03";
-    protected $paymentForm = "04";
+    protected $cfdiUse;
+    protected $paymentForm;
     protected $productCode;
     protected $unitCode;
-    protected $taxes = 0.16;
+    protected $taxes;
     protected $products;
 
     /**
@@ -56,13 +56,13 @@ class FacturamaClient
         $facturama_username,
         $facturama_password,
         $serie,
-        $currency,
         $expeditionPlace,
-        $cfdiUse,
-        $paymentForm,
         $productCode,
-        $unitCode,
-        $taxes,
+        $unitCode = 'E48',
+        $currency = 'MXN',
+        $cfdiUse = "G03",
+        $paymentForm = "04",
+        $taxes = 0.16,
         $env = "dev"
     )
     {
