@@ -29,13 +29,13 @@ class FacturamaClient
 
     // Variables
     protected $serie;
-    protected $currency;
+    protected $currency = 'MXN';
     protected $expeditionPlace;
-    protected $cfdiUse;
-    protected $paymentForm;
+    protected $cfdiUse = 'G03';
+    protected $paymentForm = '04';
     protected $productCode;
-    protected $unitCode;
-    protected $taxes;
+    protected $unitCode = 'E48';
+    protected $taxes = 0.16;
     protected $products;
 
     /**
@@ -43,13 +43,8 @@ class FacturamaClient
      * @param $facturama_username
      * @param $facturama_password
      * @param $serie
-     * @param $currency
      * @param $expeditionPlace
-     * @param $cfdiUse
-     * @param $paymentForm
      * @param $productCode
-     * @param $unitCode
-     * @param $taxes
      * @param string $env
      */
     public function __construct(
@@ -58,24 +53,27 @@ class FacturamaClient
         $serie,
         $expeditionPlace,
         $productCode,
-        $unitCode = 'E48',
-        $currency = 'MXN',
-        $cfdiUse = "G03",
-        $paymentForm = "04",
-        $taxes = 0.16,
         $env = "dev"
     )
     {
         $this->user = $facturama_username;
         $this->password = $facturama_password;
         $this->server = ($env == "dev") ? self::DEV_SERVER : self::PROD_SERVER;
-
         $this->serie = $serie;
-        $this->currency = $currency;
         $this->expeditionPlace = $expeditionPlace;
+        $this->productCode = $productCode;
+    }
+
+    public function setOptions(
+        $unitCode = 'E48',
+        $currency = 'MXN',
+        $cfdiUse = "G03",
+        $paymentForm = "04",
+        $taxes = 0.16
+    ){
+        $this->currency = $currency;
         $this->cfdiUse = $cfdiUse;
         $this->paymentForm = $paymentForm;
-        $this->productCode = $productCode;
         $this->unitCode = $unitCode;
         $this->taxes = $taxes;
     }

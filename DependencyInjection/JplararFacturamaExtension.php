@@ -29,13 +29,8 @@ class JplararFacturamaExtension extends Extension
             'facturama_username',
             'facturama_password',
             'facturama_serie',
-            'facturama_currency',
             'facturama_expedition_place',
-            'facturama_cfdi_use',
-            'facturama_payment_form',
             'facturama_product_code',
-            'facturama_unit_code',
-            'facturama_taxes',
             'facturama_env'
         ];
 
