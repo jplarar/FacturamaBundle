@@ -5,7 +5,7 @@ services:
      Jplarar\FacturamaBundle\Services\FacturamaClient: "@facturama_client"
      facturama_client:
          class:     "%facturama_client.class%"
-         arguments: ["%facturama_username%","%facturama_password%","%serie%","%expedition_place%","%product_code%","%unit_code%","%currency%","%cfdi_use%","%payment_form%","%taxes%","%env%"]
+         arguments: ["%facturama_username%","%facturama_password%","%facturama_serie%","%facturama_expedition_place%","%facturama_product_code%","%facturama_env%"]
          autowire: true
          public: true
 
