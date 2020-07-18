@@ -25,13 +25,8 @@ class Configuration implements ConfigurationInterface
             ->scalarNode('facturama_username')->defaultValue(null)->end()
             ->scalarNode('facturama_password')->defaultValue(null)->end()
             ->scalarNode('facturama_serie')->defaultValue(null)->end()
-            ->scalarNode('facturama_currency')->defaultValue(null)->end()
             ->scalarNode('facturama_expedition_place')->defaultValue(null)->end()
-            ->scalarNode('facturama_cfdi_use')->defaultValue(null)->end()
-            ->scalarNode('facturama_payment_form')->defaultValue(null)->end()
             ->scalarNode('facturama_product_code')->defaultValue(null)->end()
-            ->scalarNode('facturama_unit_code')->defaultValue(null)->end()
-            ->scalarNode('facturama_taxes')->defaultValue(null)->end()
             ->scalarNode('facturama_env')->defaultValue(null)->end()
             ->end();
 
