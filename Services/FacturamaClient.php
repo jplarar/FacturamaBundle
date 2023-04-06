@@ -15,7 +15,7 @@ class FacturamaClient
     const DEV_SERVER = "https://apisandbox.facturama.mx";
 
     // Routes
-    const CREATE_BILL = "/2/cfdis";
+    const CREATE_BILL = "/3/cfdis";
     const GET_BILL = "/cfdi/";
     const GET_CLIENT = "/Client?keyword=";
     const NEW_CLIENT = "/Client";
@@ -85,7 +85,7 @@ class FacturamaClient
      * @return string
      * @throws \Exception
      */
-    public function createBill($folio, $rfc, $name)
+    public function createBill($folio, $rfc, $name, $zipCode)
     {
         $body = [
             "Serie"=> $this->serie,
@@ -98,7 +98,9 @@ class FacturamaClient
             "Receiver" => [
                 "Rfc"=> $rfc,
                 "Name" => $name,
-                "CfdiUse"=> $this->cfdiUse
+                "CfdiUse"=> $this->cfdiUse,
+                "FiscalRegime" => "601",
+	            "TaxZipCode" => $zipCode
             ],
             "Items"=> $this->products
         ];
@@ -138,6 +140,7 @@ class FacturamaClient
             "UnitPrice"=> number_format($price, 2, '.', ''),
             "Quantity"=> $quantity,
             "Subtotal"=> number_format($quantity * $price, 2, '.', ''),
+            "TaxObject" => "02",
             "Taxes"=> [
                 [
                     "Total"=> number_format(($quantity * $price) * $this->taxes, 2, '.', ''),
