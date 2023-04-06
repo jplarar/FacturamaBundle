@@ -85,7 +85,7 @@ class FacturamaClient
      * @return string
      * @throws \Exception
      */
-    public function createBill($folio, $rfc, $name, $zipCode)
+    public function createBill($folio, $rfc, $name, $zipCode, $fiscalRegime = "601")
     {
         $body = [
             "Serie"=> $this->serie,
@@ -99,7 +99,7 @@ class FacturamaClient
                 "Rfc"=> $rfc,
                 "Name" => $name,
                 "CfdiUse"=> $this->cfdiUse,
-                "FiscalRegime" => "601",
+                "FiscalRegime" => $fiscalRegime,
 	            "TaxZipCode" => $zipCode
             ],
             "Items"=> $this->products
